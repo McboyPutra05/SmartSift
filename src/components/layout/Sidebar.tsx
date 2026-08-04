@@ -12,7 +12,7 @@ export function Sidebar() {
   const location = useLocation()
   
   const isHome = location.pathname === '/'
-  const isJobs = location.pathname.startsWith('/jobs')
+  const isJobs = location.pathname.startsWith('/extraction')
   const isCandidates = location.pathname === '/candidates'
 
   return (
@@ -44,7 +44,7 @@ export function Sidebar() {
         </Link>
 
         <Link
-          to={"/jobs/new" as any} // Temp route to show jobs
+          to="/extraction"
           className={cn(
             'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors',
             isJobs
