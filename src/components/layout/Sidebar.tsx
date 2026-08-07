@@ -14,6 +14,7 @@ export function Sidebar() {
   const isHome = location.pathname === '/'
   const isJobs = location.pathname.startsWith('/extraction')
   const isCandidates = location.pathname === '/candidates'
+  const isSettings = location.pathname === '/settings'
 
   return (
     <aside className="w-[260px] flex-shrink-0 flex flex-col bg-white h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10 relative">
@@ -70,9 +71,12 @@ export function Sidebar() {
         </Link>
 
         <Link
-          to={"/settings" as any}
+          to="/settings"
           className={cn(
-            'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary'
+            'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors',
+            isSettings
+              ? 'bg-brand/10 text-brand'
+              : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
           )}
         >
           <Settings className="h-4 w-4" />
