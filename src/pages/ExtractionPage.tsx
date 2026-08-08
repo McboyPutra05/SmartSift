@@ -1,4 +1,4 @@
-
+import { useNavigate } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import {
   Sparkles, FileText, UploadCloud, FileUp, 
@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 
 export function ExtractionPage() {
+  const navigate = useNavigate()
   return (
     <div className="h-full flex flex-col bg-[#F8FAFC] overflow-y-auto">
       <div className="p-8 max-w-[1400px] mx-auto w-full flex flex-col gap-6 animate-fade-in mb-12">
@@ -200,7 +201,7 @@ export function ExtractionPage() {
             </div>
 
             {/* Footer */}
-            <div className="p-6 bg-slate-50 border-t border-slate-100 mt-auto rounded-b-2xl">
+            <div className="p-6 bg-slate-50 mt-auto rounded-b-2xl">
               <div className="flex justify-between items-center mb-3">
                 <span className="text-sm font-bold text-slate-700">Total Progress</span>
                 <span className="text-xs font-bold text-indigo-700">16/20 files processed</span>
@@ -208,7 +209,10 @@ export function ExtractionPage() {
               <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden mb-6">
                 <div className="h-full bg-indigo-600 rounded-full" style={{ width: '80%' }}></div>
               </div>
-              <Button className="w-full bg-[#2F4F4F] hover:bg-[#1f3636] text-white font-bold h-12 shadow-sm rounded-xl text-sm">
+              <Button 
+                onClick={() => navigate({ to: '/candidates' })}
+                className="w-full bg-[#2F4F4F] hover:bg-[#1f3636] text-white font-bold h-12 shadow-sm rounded-xl text-sm"
+              >
                 View Analyzed Results
               </Button>
             </div>
