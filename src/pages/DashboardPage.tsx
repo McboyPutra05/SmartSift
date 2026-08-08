@@ -21,11 +21,11 @@ export function DashboardPage() {
 
   const handleJobCreated = (jobId: string) => {
     setShowJobForm(false)
-    navigate({ to: '/jobs/$jobId', params: { jobId } })
+    navigate({ to: '/extraction' })
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full bg-[#F8FAFC] overflow-y-auto pb-12">
       {showJobForm ? (
         <div className="p-8 max-w-3xl mx-auto">
            <div className="flex items-center justify-between mb-6">
@@ -48,29 +48,29 @@ export function DashboardPage() {
                   
                   <div className="grid grid-cols-3 gap-4">
                     {/* Stat 1 */}
-                    <Card className="p-5 flex items-center gap-4 rounded-xl border-slate-200 shadow-sm">
+                    <Card className="p-5 flex items-center gap-4 rounded-xl border-transparent shadow-sm bg-white">
                       <div className="p-3 bg-blue-50 text-brand rounded-lg">
                         <Users className="h-5 w-5" />
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground font-medium">Candidates Processed</p>
-                        <p className="text-2xl font-bold text-foreground mt-0.5">1,284</p>
+                        <p className="text-2xl font-bold text-foreground mt-0.5 justify-centered">1,284</p>
                       </div>
                     </Card>
                     
                     {/* Stat 2 */}
-                    <Card className="p-5 flex items-center gap-4 rounded-xl border-slate-200 shadow-sm">
+                    <Card className="p-5 flex items-center gap-4 rounded-xl border-transparent shadow-sm bg-white">
                       <div className="p-3 bg-emerald-50 text-emerald-600 rounded-lg">
                         <Sparkles className="h-5 w-5" />
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground font-medium">Avg. Match Score</p>
-                        <p className="text-2xl font-bold text-foreground mt-0.5">88.4%</p>
+                        <p className="text-2xl font-bold text-foreground mt-0.5 flex items-centered">88.4%</p>
                       </div>
                     </Card>
                     
                     {/* Stat 3 */}
-                    <Card className="p-5 flex items-center gap-4 rounded-xl border-slate-200 shadow-sm">
+                    <Card className="p-5 flex items-center gap-4 rounded-xl border-transparent shadow-sm bg-white">
                       <div className="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
                         <User className="h-5 w-5" />
                       </div>
@@ -96,7 +96,7 @@ export function DashboardPage() {
                     ) : (
                       <>
                         {jobs.slice(0, 2).map((job) => (
-                           <Card key={job.id} className="p-6 rounded-xl border-slate-200 shadow-sm flex flex-col justify-between h-48 cursor-pointer hover:border-brand/30 transition-colors bg-white">
+                           <Card key={job.id} className="p-6 rounded-xl border-transparent shadow-sm flex flex-col justify-between min-h-[12rem] h-auto cursor-pointer hover:shadow-md transition-shadow bg-white">
                              <div>
                                <div className="flex justify-between items-start mb-3">
                                   <Badge variant="secondary" className="bg-slate-100 text-slate-600 hover:bg-slate-200 border-none font-medium text-[10px] uppercase">{job.department || 'General'}</Badge>
@@ -105,7 +105,7 @@ export function DashboardPage() {
                                <h4 className="font-bold text-lg text-foreground line-clamp-1">{job.title}</h4>
                                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">Looking for candidates matching this role's specific requirements.</p>
                              </div>
-                             <div className="flex justify-between items-end mt-4 pt-4 border-t border-slate-100">
+                             <div className="flex justify-between items-end mt-4 pt-4">
                                <div className="flex -space-x-2">
                                   <div className="w-7 h-7 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">JD</div>
                                   <div className="w-7 h-7 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-emerald-600">SK</div>
@@ -122,7 +122,7 @@ export function DashboardPage() {
                         {/* Static "Start New Campaign" card matching the UI */}
                         <Card 
                           onClick={() => setShowJobForm(true)}
-                          className="p-6 rounded-xl border-2 border-dashed border-slate-200 bg-transparent flex flex-col items-center justify-center h-48 cursor-pointer hover:bg-slate-50 transition-colors"
+                          className="p-6 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/30 flex flex-col items-center justify-center min-h-[12rem] h-auto cursor-pointer hover:bg-indigo-50/50 transition-colors shadow-sm"
                         >
                            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand mb-3">
                               <Plus className="h-5 w-5" />
@@ -137,8 +137,8 @@ export function DashboardPage() {
 
               {/* Right Sidebar (Recent Activity) */}
               <div className="w-[320px] flex-shrink-0">
-                <Card className="rounded-xl border-slate-200 shadow-sm bg-white h-full flex flex-col">
-                  <div className="flex items-center justify-between p-5 border-b border-slate-100">
+                <Card className="rounded-xl border-transparent shadow-sm bg-white h-full flex flex-col">
+                  <div className="flex items-center justify-between p-5">
                     <h3 className="font-bold text-foreground">Recent Activity</h3>
                     <History className="h-4 w-4 text-muted-foreground" />
                   </div>
@@ -180,8 +180,8 @@ export function DashboardPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-4 border-t border-slate-100">
-                    <button className="w-full py-2 rounded-md border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
+                  <div className="p-4 mt-auto">
+                    <button className="w-full py-2 rounded-md bg-slate-50 border border-transparent text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors shadow-sm">
                       View Activity Logs
                     </button>
                   </div>
