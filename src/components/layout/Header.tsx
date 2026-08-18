@@ -1,17 +1,18 @@
-import { Search, Bell, HelpCircle, Upload } from 'lucide-react'
+import { Search, Bell, HelpCircle } from 'lucide-react'
 import { useLocation } from '@tanstack/react-router'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 
 export function Header() {
   const location = useLocation()
   
   const isHome = location.pathname === '/'
   const isExtraction = location.pathname.includes('/extraction')
+  const isSettings = location.pathname === '/settings'
   
   let title = 'Candidates'
   if (isHome) title = 'Recruitment Hub'
   if (isExtraction) title = 'Bulk Upload'
+  if (isSettings) title = 'Settings'
 
   return (
     <header className="flex items-center justify-between px-8 h-20 bg-white flex-shrink-0 w-full shadow-[0_4px_24px_rgba(0,0,0,0.02)] z-0 relative">
@@ -41,10 +42,6 @@ export function Header() {
         <div className="flex items-center gap-5 text-slate-500">
           <button className="hover:text-foreground transition-colors"><Bell className="h-5 w-5" /></button>
           <button className="hover:text-foreground transition-colors"><HelpCircle className="h-5 w-5" /></button>
-          <Button className="gap-2 shadow-sm">
-            <Upload className="h-4 w-4" />
-            Bulk Upload
-          </Button>
         </div>
       </div>
     </header>
